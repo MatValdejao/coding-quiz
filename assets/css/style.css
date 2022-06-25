@@ -1,0 +1,38 @@
+* {
+    font-family:'Times New Roman', Times, serif;
+}
+
+:root {
+    --button-color: purple;
+    --button-color-hover: rgb(168, 123, 210);
+    --white: rgb(255, 255, 255);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+header a {
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    margin-left: 35%;
+    margin-right: 35%;
+    align-items: center;
+    text-align: center;
+}
+
+.btn {
+    background-color: var(--button-color);
+    color: var(--white);
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: var(--button-color-hover);
+}
