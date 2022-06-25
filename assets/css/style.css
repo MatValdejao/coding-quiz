@@ -1,5 +1,6 @@
 * {
     font-family:'Times New Roman', Times, serif;
+    margin-bottom: 20px;
 }
 
 :root {
@@ -12,6 +13,7 @@ header {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
 header a {
@@ -24,6 +26,9 @@ main {
     margin-left: 35%;
     margin-right: 35%;
     align-items: center;
+}
+
+main p {
     text-align: center;
 }
 
@@ -31,6 +36,7 @@ main {
     background-color: var(--button-color);
     color: var(--white);
     border-radius: 5px;
+    margin-bottom: 5px;
 }
 
 .btn a {
