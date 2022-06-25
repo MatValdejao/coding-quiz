@@ -33,6 +33,11 @@ main {
     border-radius: 5px;
 }
 
+.btn a {
+    color: var(--white);
+    text-decoration: none;
+}
+
 .btn:hover {
     background-color: var(--button-color-hover);
 }
