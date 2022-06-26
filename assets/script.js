@@ -143,13 +143,14 @@ var endGame = function () {
 
 var highscoreSave = function (event) {
   event.preventDefault();
-
   // adds attempt to highscore array
-  var formEl = document.querySelector(".initials-form");
-  console.log(formEl);
-
+  var initials = document.querySelector("form [name='initials']").value;
+  highscoreInsert = initials + ": " + initialTime;
+  console.log(highscoreInsert)
+  
+  highScores.push(highscoreInsert);
   // saves attempt score to storage
-  localStorage.setItem("highscores", JSON.stringify())
+  localStorage.setItem("highscores", JSON.stringify(highScores));
 }
 
 var countdown = function () {
