@@ -49,7 +49,6 @@ var displayScores = function (theScore) {
     var divEl = document.querySelector(".highscores");
     divEl.style.width = "100%";
     var olEl = document.createElement("ol");
-    olEl.style.backgroundColor = "rgb(228, 217, 238)";
     mainEl.style.alignItems = "flex-start";
     
     // loops through score array and adds to list of values in display

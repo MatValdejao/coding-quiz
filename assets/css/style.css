@@ -28,12 +28,13 @@ main {
     align-items: center;
 }
 
-main h1 {
-    margin-bottom: 0px;
-}
-
 main p {
     text-align: center;
+}
+
+ol {
+    background-color: rgb(228, 217, 238);
+    margin-top: -10px;
 }
 
 .initials {
