@@ -96,6 +96,7 @@ var whichButton = function (event) {
     }
 }
 
+// checks whether answer is correct and detracts ten second of time if it is incorrect
 var answerChecker = function (button) {
   if (button.textContent === qsObjArray[questionCounter].correctAnswer) {
     var answerDisplayEl = document. createElement("section");
