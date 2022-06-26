@@ -77,3 +77,7 @@ ol {
     text-align: left;
     margin-bottom: 0px;
 }
+
+.head-container h3 {
+    font-size: 24px;
+}
