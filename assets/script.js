@@ -105,6 +105,8 @@ var answerChecker = function (button) {
     answerDisplayEl.className = "answer-display";
     answerDisplayEl.textContent = "Correct!";
     mainEl.appendChild(answerDisplayEl);
+    var audio = new Audio("./assets/audio/Correct.mp3");
+    audio.play();
   } else {
     // displays whether answer is incorrect and removes ten seconds
     initialTime = initialTime - 10;
@@ -112,6 +114,8 @@ var answerChecker = function (button) {
     answerDisplayEl.className = "answer-display";
     answerDisplayEl.textContent = "Wrong!";
     mainEl.appendChild(answerDisplayEl);
+    var audio = new Audio("./assets/audio/Wrong.mp3");
+    audio.play();
   }
   questionCounter++;
   clear();
