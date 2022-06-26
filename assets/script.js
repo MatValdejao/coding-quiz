@@ -107,6 +107,7 @@ var answerChecker = function (button) {
     mainEl.appendChild(answerDisplayEl);
   } else {
     // displays whether answer is incorrect and removes ten seconds
+    initialTime = initialTime - 10;
     var answerDisplayEl = document.createElement("section");
     answerDisplayEl.className = "answer-display";
     answerDisplayEl.textContent = "Wrong!";
@@ -153,10 +154,26 @@ var highscoreSave = function (event) {
   localStorage.setItem("highscores", JSON.stringify(highScores));
 }
 
+var highscoreRetrieve = function () {
+  var savedHighscores = localStorage.getItem("highscores");
+
+  if (!savedHighscores) {
+    return false;
+  }
+
+  // converts back to DOM object
+  savedHighscores = JSON.parse(savedHighscores);
+
+  // adds to highscores list previous scores
+  for (var i = 0; i < savedHighscores.length; i++) {
+    highScores.push(savedHighscores[i]);
+  }
+}
+
 var countdown = function () {
   var timer = setInterval(function () {
     // check whether time is above zero
-    if (initialTime > 70) {
+    if (initialTime > 50) {
       timeEl.textContent = "Time: " + initialTime;
       initialTime--;
     } else {
@@ -168,3 +185,6 @@ var countdown = function () {
 }
 
 startButtonEl.addEventListener("click", startGame);
+
+// calls previous highscores
+highscoreRetrieve();
