@@ -3,6 +3,8 @@ var highScores = [];
 
 // clearhighscore funtion
 var clearHistory = function (event) {
+    var olEl = document.querySelector("ol") 
+    olEl.remove();
     localStorage.clear();
 }
 
@@ -21,7 +23,6 @@ var highscoreRetrieve = function () {
   for (var i = 0; i < savedHighscores.length; i++) {
     highScores.push(savedHighscores[i]);
   }
-
     orderScores();
 };
 
@@ -29,20 +30,42 @@ var highscoreRetrieve = function () {
 var orderScores = function () {
     // loop through highScores and take score value, compare to previous extracted 
     scoreStart = -9999;
-    theScore = []
+    theScore = [];
     for (var i = 0; i < highScores.length; i++) {
-        var space = highScores[i].indexOf(" ");
-        score = (highScores[i].slice(space + 1));
-        if (parseInt(score) > scoreStart) {
-            scoreStart = score
-            theScore.unshift(score);
-        }
-        else if (parseInt(score) <= scoreStart) {
-            theScore.push(score);
-        }
+        score = highScores[i].score;
+        theScore.push(score);
     }
+    // puts them in 
+    theScore.sort();
+    theScore.reverse();
+    console.log(theScore);
+
+    // calls display function to show user
+    displayScores(theScore);
+}
+
+var displayScores = function (theScore) {
+    // select div element where list will be 
+    var divEl = document.querySelector(".highscores");
+    var olEl = document.createElement("ol");
     
 
+    // loops through score array and adds to list of values in display
+    for (var i = 0; i < theScore.length; i++) {
+        for (var v = i; v < highScores.length; v++) {
+            if (highScores[v].score === theScore[i]) {
+                var listItemEl = document.createElement("li");
+                listItemEl.textContent = highScores[v].name + theScore[i];
+                // console.log(listItemEl);
+                olEl.appendChild(listItemEl);  
+                break;
+            }
+            else {
+                continue;
+            }
+        }
+    }
+    divEl.appendChild(olEl);
 }
 
 

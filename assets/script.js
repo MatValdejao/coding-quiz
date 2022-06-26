@@ -149,9 +149,11 @@ var endGame = function () {
 var highscoreSave = function (event) {
   // adds attempt to highscore array
   var initials = document.querySelector("form [name='initials']").value;
-  highscoreInsert = initials + ": " + initialTime;
-  console.log(highscoreInsert)
-  
+  highscoreInsert = {
+    name: initials + ": ",
+    score: initialTime
+  }
+
   highScores.push(highscoreInsert);
   // saves attempt score to storage
   localStorage.setItem("highscores", JSON.stringify(highScores));
