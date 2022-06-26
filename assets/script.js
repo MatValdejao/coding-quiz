@@ -147,7 +147,6 @@ var endGame = function () {
 };
 
 var highscoreSave = function (event) {
-  event.preventDefault();
   // adds attempt to highscore array
   var initials = document.querySelector("form [name='initials']").value;
   highscoreInsert = initials + ": " + initialTime;
