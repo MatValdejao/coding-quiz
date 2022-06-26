@@ -40,6 +40,7 @@ var qsObjArray = [{
 // select main page content and remove from page
 var startGame = function (event) {
   var h1El = document.querySelector(".head-quiz");
+  // var pEl = document.querySelector(".p-quiz");
   var pEl = document.querySelector(".p-quiz");
 
   // take header, p, and button and remove from page
@@ -55,38 +56,47 @@ var startGame = function (event) {
 
 var clear = function () {
   var h3El = document.querySelector("h3");
-
   var buttonHolderEl = document.querySelector(".button-holder");
+  var sectionEl = document.querySelector(".answer-display");
 
+  // removes previous question and answer options from the page
   h3El.remove();
   buttonHolderEl.remove();
 }
 
 var questionDisplay = function (questionCount) {
+  if (questionCount <= qsObjArray.length - 1) {
+    var buttonContainerEl = document.querySelector(".btn-container");
+    var headContainerEl = document.querySelector(".head-container");
 
-  // displays question for user
-  h3El = document.createElement("h3") 
-  h3El.textContent = qsObjArray[questionCounter].question;
-  buttonHolderEl = document.createElement("div");
-  buttonHolderEl.className = "button-holder";
-  mainEl.appendChild(h3El);
-  mainEl.appendChild(buttonHolderEl);
-  // changes align item property to align all main child elements
-  mainEl.style.alignItems = "flex-start";
+    // displays question for user
+    h3El = document.createElement("h3");
+    h3El.textContent = qsObjArray[questionCounter].question;
+    buttonHolderEl = document.createElement("div");
+    buttonHolderEl.className = "button-holder";
+    headContainerEl.appendChild(h3El);
+    buttonContainerEl.appendChild(buttonHolderEl);
+    // mainEl.appendChild(h3El);
+    // mainEl.appendChild(buttonHolderEl);
+    // changes align item property to align all main child elements
+    mainEl.style.alignItems = "flex-start";
 
-  // create four buttons as answer options
-  for (var i = 0; i < qsObjArray[questionCount].answers.length; i++) {
-    var answerButtonEl = document.createElement("button");
-    answerButtonEl.className = "btn";
-    answerButtonEl.setAttribute("id", "answer-btn");
-    answerButtonEl.textContent =
-    (i + 1) + ". " + qsObjArray[questionCount].answers[i];
-    // appends to main element
-    buttonHolderEl.appendChild(answerButtonEl);
+    // create four buttons as answer options
+    for (var i = 0; i < qsObjArray[questionCount].answers.length; i++) {
+      var answerButtonEl = document.createElement("button");
+      answerButtonEl.className = "btn";
+      answerButtonEl.setAttribute("id", "answer-btn");
+      answerButtonEl.textContent =
+        i + 1 + ". " + qsObjArray[questionCount].answers[i];
+      // appends to main element
+      buttonHolderEl.appendChild(answerButtonEl);
+    }
+    // create event listener for answer click
+    mainEl.addEventListener("click", whichButton);
+  }  
+  else {
+    endGame();
   }
-
-  // create event listener for answer click
-  mainEl.addEventListener("click", whichButton);
 }
 
 var whichButton = function (event) {
@@ -117,28 +127,44 @@ var answerChecker = function (button) {
     var audio = new Audio("./assets/audio/Wrong.mp3");
     audio.play();
   }
+
+  // removes answer-display after brief feeback to user
+  var sectionEl = document.querySelector(".answer-display");
+  var timeDelay = setTimeout(function () {
+    sectionEl.remove();
+  }, 300);
+
   questionCounter++;
   clear();
   questionDisplay(questionCounter);
 }
 
 var endGame = function () {
-  clear();
+  if (questionCounter <= qsObjArray.length - 1) {
+    clear();
+  } 
+  
+  var buttonContainerEl = document.querySelector(".btn-container");
+  var pContainerEl = document.querySelector(".p-container");
+  var headContainerEl = document.querySelector(".head-container");
+
   var h3El = document.createElement("h3");
   h3El.textContent = "All Done!";
 
-  var pEl = document.createElement("p");
-  pEl.textContent = "Your final score is " + initialTime;
+  var finalScoreEl = document.createElement("p");
+  finalScoreEl.textContent = "Your final score is " + initialTime;
 
   // Creates form element to allow initial input of user
   var formEl = document.createElement("form");
   formEl.className = "initials-form";
   formEl.innerHTML =
-    "<div>Enter initials: <input type='text' name='initials' placeholder=''/></div><div><a href='./highscore.html'><button class='btn' type='submit' id='initials-btn'>Submit</button></a>";
+    "<div>Enter initials: <input type='text' name='initials' placeholder=''/></div><div><a href='./highscore.html'><button class='btn' type='submit' id='initials-btn' style='margin-left: 5px'>Submit</button></a>";
+  formEl.style.display = "flex";
+  formEl.style.marginBottom = "5px";
   
-  mainEl.appendChild(h3El);
-  mainEl.appendChild(pEl);
-  mainEl.appendChild(formEl);
+  headContainerEl.appendChild(h3El);
+  pContainerEl.appendChild(finalScoreEl);
+  buttonContainerEl.appendChild(formEl);
 
   // event listener for when user clicks submit button
   var endButtonEl = document.querySelector("#initials-btn");
@@ -177,17 +203,21 @@ var highscoreRetrieve = function () {
 
 var countdown = function () {
   var timer = setInterval(function () {
-    // check whether time is above zero
-    if (initialTime > 50) {
-      timeEl.textContent = "Time: " + initialTime;
-      initialTime--;
-    } else {
-      // if time reaches zero, end the game
+    // checks whether user has finished quiz
+    if (questionCounter > qsObjArray.length - 1) {
       clearInterval(timer);
-      endGame();
+      return 
+    }
+    // check whether time is above zero
+    if (initialTime > 0) {
+      timeEl.textContent = "Time: " + (initialTime - 1);
+      return initialTime--;
+    } else {
+      clearInterval(timer);
+      return endGame();
     }
   }, 1000);
-}
+};
 
 startButtonEl.addEventListener("click", startGame);
 

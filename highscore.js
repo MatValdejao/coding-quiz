@@ -38,7 +38,6 @@ var orderScores = function () {
     // puts them in 
     theScore.sort();
     theScore.reverse();
-    console.log(theScore);
 
     // calls display function to show user
     displayScores(theScore);
@@ -47,14 +46,16 @@ var orderScores = function () {
 var displayScores = function (theScore) {
     // select div element where list will be 
     var divEl = document.querySelector(".highscores");
+    divEl.style.width = "100%";
     var olEl = document.createElement("ol");
+    olEl.style.backgroundColor = "rgb(228, 217, 238)";
     
-
     // loops through score array and adds to list of values in display
     for (var i = 0; i < theScore.length; i++) {
         for (var v = i; v < highScores.length; v++) {
             if (highScores[v].score === theScore[i]) {
                 var listItemEl = document.createElement("li");
+                listItemEl.style.marginBottom = "3px";
                 listItemEl.textContent = highScores[v].name + theScore[i];
                 // console.log(listItemEl);
                 olEl.appendChild(listItemEl);  
