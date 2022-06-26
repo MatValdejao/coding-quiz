@@ -11,30 +11,30 @@ questionCounter = 0;
 initialTime = 75;
 
 var qsObjArray = [{
-    question: questions[0],
-    answers: ["strings", "booleans", "alerts", "numbers"],
-    correctAnswer: "3. alerts"
-    },
-    {
-    question: questions[1],
-    answers: ["quotes", "curly brackets", "parentheses", "square brackets"],
-    correctAnswer: "3. parentheses" 
-    },
-    {
-    question: questions[2],
-    answers: ["numbers and strings", "other arrays", "booleans", "all of the above"],              
-    correctAnswer: "4. all of the above"
-    },
-    { 
-    question: questions[3],
-    answers: ["commas", "curly brackets", "quotes", "parentheses"],
-    correctAnswer: "3. quotes"
-    },
-    {
-    question: questions[4],
-    answers: ["JavaScript", "terminal/bash", "for loops", "console.log"],
-    correctAnswer: "4. console.log"
-    },  
+  question: questions[0],
+  answers: ["strings", "booleans", "alerts", "numbers"],
+  correctAnswer: "3. alerts"
+  },
+  {
+  question: questions[1],
+  answers: ["quotes", "curly brackets", "parentheses", "square brackets"],
+  correctAnswer: "3. parentheses" 
+  },
+  {
+  question: questions[2],
+  answers: ["numbers and strings", "other arrays", "booleans", "all of the above"],              
+  correctAnswer: "4. all of the above"
+  },
+  { 
+  question: questions[3],
+  answers: ["commas", "curly brackets", "quotes", "parentheses"],
+  correctAnswer: "3. quotes"
+  },
+  {
+  question: questions[4],
+  answers: ["JavaScript", "terminal/bash", "for loops", "console.log"],
+  correctAnswer: "4. console.log"
+  },  
 ]
 
 // select main page content and remove from page
@@ -57,7 +57,6 @@ var startGame = function (event) {
 var clear = function () {
   var h3El = document.querySelector("h3");
   var buttonHolderEl = document.querySelector(".button-holder");
-  var sectionEl = document.querySelector(".answer-display");
 
   // removes previous question and answer options from the page
   h3El.remove();
