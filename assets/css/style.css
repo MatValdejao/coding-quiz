@@ -32,6 +32,11 @@ main p {
     text-align: center;
 }
 
+.initials {
+    text-decoration: none;
+    color: var(--white);
+}
+
 .btn {
     background-color: var(--button-color);
     color: var(--white);

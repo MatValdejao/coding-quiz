@@ -158,7 +158,7 @@ var endGame = function () {
   var formEl = document.createElement("form");
   formEl.className = "initials-form";
   formEl.innerHTML =
-    "<div>Enter initials: <input type='text' name='initials' placeholder=''/></div><div><a href='./highscore.html'><button class='btn' type='submit' id='initials-btn' style='margin-left: 5px'>Submit</button></a>";
+    "<div>Enter initials: <input type='text' name='initials' placeholder=''/></div><div><button class='btn' type='submit' id='initials-btn' style='margin-left: 5px'><a href='highscore.html'>Submit</a></button>";
   formEl.style.display = "flex";
   formEl.style.marginBottom = "5px";
   
@@ -173,6 +173,7 @@ var endGame = function () {
 };
 
 var highscoreSave = function (event) {
+
   // adds attempt to highscore array
   var initials = document.querySelector("form [name='initials']").value;
   highscoreInsert = {
