@@ -1,4 +1,5 @@
-var clearButtonEl = document.querySelector("#clear-highscores")
+var clearButtonEl = document.querySelector("#clear-highscores");
+var mainEl = document.querySelector("main");
 var highScores = [];
 
 // clearhighscore funtion
@@ -49,6 +50,7 @@ var displayScores = function (theScore) {
     divEl.style.width = "100%";
     var olEl = document.createElement("ol");
     olEl.style.backgroundColor = "rgb(228, 217, 238)";
+    mainEl.style.alignItems = "flex-start";
     
     // loops through score array and adds to list of values in display
     for (var i = 0; i < theScore.length; i++) {

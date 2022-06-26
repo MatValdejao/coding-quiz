@@ -28,6 +28,10 @@ main {
     align-items: center;
 }
 
+main h1 {
+    margin-bottom: 0px;
+}
+
 main p {
     text-align: center;
 }
@@ -66,4 +70,9 @@ main p {
     margin-top: 5px;
     padding-top: 5px;
     color: var(--light-grey);
+}
+
+.highscores {
+    text-align: left;
+    margin-bottom: 0px;
 }
