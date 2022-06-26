@@ -7,6 +7,7 @@
     --button-color: purple;
     --button-color-hover: rgb(168, 123, 210);
     --white: rgb(255, 255, 255);
+    --light-grey: lightgrey;
 }
 
 header {
@@ -46,4 +47,19 @@ main p {
 
 .btn:hover {
     background-color: var(--button-color-hover);
+}
+
+.button-holder {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.answer-display {
+    font-style: italic;
+    border-top: 3px solid var(--light-grey);
+    width: 100%;
+    margin-top: 5px;
+    padding-top: 5px;
+    color: var(--light-grey);
 }
