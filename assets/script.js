@@ -168,7 +168,7 @@ var endGame = function () {
 
   // event listener for when user clicks submit button
   var endButtonEl = document.querySelector("#initials-btn");
-  // redirect into highscore.html
+  // save highscore
   endButtonEl.addEventListener("click", highscoreSave);
 };
 
