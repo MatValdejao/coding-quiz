@@ -131,7 +131,7 @@ var answerChecker = function (button) {
   var sectionEl = document.querySelector(".answer-display");
   var timeDelay = setTimeout(function () {
     sectionEl.remove();
-  }, 300);
+  }, 1000);
 
   questionCounter++;
   clear();
